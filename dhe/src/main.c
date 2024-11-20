@@ -4,17 +4,27 @@
 
 
 void *tcp_thread_func(void *arg) {
-  start_tcp_server(8080);
+  int port = *(int *)arg;
+  start_server(port);
   return NULL;
 }
 
 
 int main() {
   pthread_t tcp_thread;
+  int port = 8080;
 
-  pthread_create(&tcp_thread, NULL, tcp_thread_func, NULL);
+  if (pthread_create(&tcp_thread, NULL, tcp_thread_func, &port) != 0) {
+    perror("Failed to create thread");
+    return 1;
+  }
 
-  pthread_join(tcp_thread, NULL);
+  if (pthread_join(tcp_thread, NULL)) {
+    perror("Failed to join thread");
+    return 1;
+  }
 
   return 0;
-}
+} 
+
+
