@@ -12,7 +12,7 @@ void *tcp_thread_func(void *arg) {
 
 int main() {
   pthread_t tcp_thread;
-  int port = 8080;
+  int port = 8484;
 
   if (pthread_create(&tcp_thread, NULL, tcp_thread_func, &port) != 0) {
     perror("Failed to create thread");

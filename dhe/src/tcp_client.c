@@ -115,8 +115,8 @@ if (inet_pton(AF_INET, server_ip, &serv_addr.sin_addr) <= 0) {
 }
 
 int main() {
-  const char *server_ip = "127.0.0.1"; // Gunakan IP loopback
-  int port = 8080;
+  const char *server_ip = "imgbox2"; // Gunakan IP loopback
+  int port = 8484;
 
   start_client(server_ip, port);
   return 0;
