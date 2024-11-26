@@ -115,7 +115,7 @@ if (inet_pton(AF_INET, server_ip, &serv_addr.sin_addr) <= 0) {
 }
 
 int main() {
-  const char *server_ip = "46.250.229.129"; // Gunakan IP loopback
+  const char *server_ip = "0.0.0.0"; // Gunakan IP loopback
   int port = 8484;
 
   start_client(server_ip, port);
