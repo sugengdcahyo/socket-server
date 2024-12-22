@@ -12,7 +12,7 @@ all: $(TARGET_TCP) $(TARGET_UDP)
 
 tcp: $(TARGET_TCP)
 
-$(TARGET_TCP): src/main.c src/tcp_server.c src/include/diffie_hellman_openssl | $(OUTPUT_DIR)
+$(TARGET_TCP): src/main.c src/tcp_server.c src/include/diffie_hellman_openssl.c | $(OUTPUT_DIR)
 	$(CC) $(CFLAGS) -o $(TARGET_TCP) src/main.c src/tcp_server.c src/include/diffie_hellman_openssl.c -lcrypto -lpthread
 	$(CC) $(CFLAGS) -o output/tcp_client src/tcp_client.c src/include/diffie_hellman_openssl.c -lcrypto -lpthread
 

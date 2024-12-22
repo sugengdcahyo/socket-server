@@ -70,7 +70,7 @@ void start_client(const char *server_ip, int port) {
     exit(EXIT_FAILURE);
   }
   send(sock, client_public_key_hex, strlen(client_public_key_hex), 0);
-  send(sock, "\n", 1, 0); // terminator to delimiter message
+  // send(sock, "\n", 1, 0); // terminator to delimiter message
 
   printf("Client public key sent: %s\n", client_public_key_hex);
   OPENSSL_free(client_public_key_hex);
@@ -103,7 +103,7 @@ void start_client(const char *server_ip, int port) {
   char encrypted[1024] = {0};
   xor_encrypt_decrypt(message, encrypted, shared_secret_hash, SHA256_DIGEST_LENGTH);
   send(sock, encrypted, strlen(encrypted), 0);
-  send(sock, "\n", 1, 0); // terminator for delimeter message
+  // send(sock, "\n", 1, 0); // terminator for delimeter message
 
   printf("Encrypted data sent: %s\n", encrypted);
 
@@ -119,7 +119,7 @@ void start_client(const char *server_ip, int port) {
 }
 
 int main() {
-  const char *server_ip = "46.250.229.129"; // Gunakan IP loopback
+  const char *server_ip = "127.0.0.1"; // Gunakan IP loopback
   int port = 8484;
 
   start_client(server_ip, port);
